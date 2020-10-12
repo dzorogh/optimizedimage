@@ -4,7 +4,7 @@ namespace Dzorogh\OptimizedImage;
 
 class Picture {
     static function generate($src, array $data = null) {
-        $height_ratio = 1;
+        $height_ratio = 0;
 
         if (isset($data['width']) && $data['width'] && isset($data['height']) && $data['height']) {
             $height_ratio = $data['height'] / $data['width'];
