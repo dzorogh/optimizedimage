@@ -6,23 +6,41 @@
 
             {{ $lazy ? 'data-srcset' : 'srcset' }}="
 
-            @if ($mobile_width)
                 {{ optimized($src, [
-                    'w' => $mobile_width,
-                    'h' => $height_ratio ? $mobile_width * $height_ratio : null,
+                    'w' => $width,
+                    'h' => $height_ratio ? $width * $height_ratio : null,
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
-                    'fm' => $type ?? 'jpg'
-                ]) }} 320w,
-            @endif
+                    'fm' => 'webp',
+                    'dpr' => 0.25
+                ]) }} 400w,
 
-            {{ optimized($src, [
-                'w' => $width,
-                'h' => $height_ratio ? $width * $height_ratio : null,
-                'name' => $name ?? null,
-                'fit' => $fit ?? null,
-                'fm' => $type ?? 'jpg'
-            ]) }} 1280w"
+                {{ optimized($src, [
+                    'w' => $width,
+                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'name' => $name ?? null,
+                    'fit' => $fit ?? null,
+                    'fm' => 'webp',
+                    'dpr' => 0.5
+                ]) }} 800w,
+
+                {{ optimized($src, [
+                    'w' => $width,
+                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'name' => $name ?? null,
+                    'fit' => $fit ?? null,
+                    'fm' => 'webp',
+                    'dpr' => 0.75
+                ]) }} 1400w,
+
+                {{ optimized($src, [
+                    'w' => $width,
+                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'name' => $name ?? null,
+                    'fit' => $fit ?? null,
+                    'fm' => 'webp',
+                    'dpr' => 1
+                ]) }} 1800w"
 
             type="image/webp">
 
@@ -32,25 +50,44 @@
             @endif
 
             {{ $lazy ? 'data-srcset' : 'srcset' }}="
-                @if ($mobile_width)
-                    {{ optimized($src, [
-                        'w' => $mobile_width,
-                        'h' => $height_ratio ? $mobile_width * $height_ratio : null,
-                        'name' => $name ?? null,
-                        'fit' => $fit ?? null,
-                        'fm' => $type ?? 'jpg'
-                    ]) }} 320w,
-                @endif
 
                 {{ optimized($src, [
                     'w' => $width,
                     'h' => $height_ratio ? $width * $height_ratio : null,
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
-                    'fm' => $type ?? 'jpg'
-                ]) }} 1280w"
+                    'fm' => $type ?? 'jpg',
+                    'dpr' => 0.25
+                ]) }} 400w,
 
-            type="image/{{ $type === 'jpg' ? 'jpeg' : $type }}">
+                {{ optimized($src, [
+                    'w' => $width,
+                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'name' => $name ?? null,
+                    'fit' => $fit ?? null,
+                    'fm' => $type ?? 'jpg',
+                    'dpr' => 0.5
+                ]) }} 800w,
+
+                {{ optimized($src, [
+                    'w' => $width,
+                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'name' => $name ?? null,
+                    'fit' => $fit ?? null,
+                    'fm' => $type ?? 'jpg',
+                    'dpr' => 0.75
+                ]) }} 1400w,
+
+                {{ optimized($src, [
+                    'w' => $width,
+                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'name' => $name ?? null,
+                    'fit' => $fit ?? null,
+                    'fm' => $type ?? 'jpg',
+                    'dpr' => 1
+                ]) }} 1800w"
+
+            type="image/{{ (!$type || $type === 'jpg') ? 'jpeg' : $type }}">
 
     <img
             @if ($lazy)
