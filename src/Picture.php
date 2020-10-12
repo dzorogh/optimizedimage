@@ -6,7 +6,7 @@ class Picture {
     static function generate($src, array $data = null) {
         $height_ratio = 1;
 
-        if (isset($data['width']) && isset($data['height'])) {
+        if (isset($data['width']) && $data['width'] && isset($data['height']) && $data['height']) {
             $height_ratio = $data['height'] / $data['width'];
         }
 
