@@ -5,7 +5,7 @@
 
 ## How to use
 
-```php
+```blade
 {!! \Dzorogh\OptimizedImage\Picture::generate('/image/path/inside/storage/app/public/folder.jpg', [
     'width' => 1200,
     'height' => 600,
