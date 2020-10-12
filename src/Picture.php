@@ -19,7 +19,8 @@ class Picture {
             'name' => $data['name'] ?? null,
             'type' => $data['type'] ?? null,
             'fit' => $data['fit'] ?? null,
-            'height_ratio' => $height_ratio
+            'height_ratio' => $height_ratio,
+            'lazy' => isset($data['lazy']) ? $data['lazy'] : true,
         ]);
     }
 }
