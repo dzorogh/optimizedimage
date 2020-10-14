@@ -23,6 +23,10 @@ function optimized($src, $params = null)
         }
     }
 
+    \Illuminate\Support\Facades\Log::info('Generating Image Path', [
+        'path' => $path['dirname'] . '/' . $path['filename'] . '/' . urlencode(($params['name'] ?? config('optimizedimage.default_name'))) . '.' . $path['extension'],
+    ]);
+
     $url = $urlBuilder->getUrl($path['dirname'] . '/' . $path['filename'] . '/' . urlencode(($params['name'] ?? config('optimizedimage.default_name'))) . '.' . $path['extension'], [
 
         'q' => isset($params['preload']) ? 40 : 85,
