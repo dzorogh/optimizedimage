@@ -6,7 +6,7 @@
 
             {{ $lazy ? 'data-srcset' : 'srcset' }}="
 
-                {{ optimized($src, [
+                {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
                     'h' => $height_ratio ? $width * $height_ratio : null,
                     'name' => $name ?? null,
@@ -15,7 +15,7 @@
                     'dpr' => 0.25
                 ]) }} 400w,
 
-                {{ optimized($src, [
+                {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
                     'h' => $height_ratio ? $width * $height_ratio : null,
                     'name' => $name ?? null,
@@ -24,7 +24,7 @@
                     'dpr' => 0.5
                 ]) }} 800w,
 
-                {{ optimized($src, [
+                {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
                     'h' => $height_ratio ? $width * $height_ratio : null,
                     'name' => $name ?? null,
@@ -33,7 +33,7 @@
                     'dpr' => 0.75
                 ]) }} 1400w,
 
-                {{ optimized($src, [
+                {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
                     'h' => $height_ratio ? $width * $height_ratio : null,
                     'name' => $name ?? null,
@@ -51,7 +51,7 @@
 
             {{ $lazy ? 'data-srcset' : 'srcset' }}="
 
-                {{ optimized($src, [
+                {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
                     'h' => $height_ratio ? $width * $height_ratio : null,
                     'name' => $name ?? null,
@@ -60,7 +60,7 @@
                     'dpr' => 0.25
                 ]) }} 400w,
 
-                {{ optimized($src, [
+                {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
                     'h' => $height_ratio ? $width * $height_ratio : null,
                     'name' => $name ?? null,
@@ -69,7 +69,7 @@
                     'dpr' => 0.5
                 ]) }} 800w,
 
-                {{ optimized($src, [
+                {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
                     'h' => $height_ratio ? $width * $height_ratio : null,
                     'name' => $name ?? null,
@@ -78,7 +78,7 @@
                     'dpr' => 0.75
                 ]) }} 1400w,
 
-                {{ optimized($src, [
+                {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
                     'h' => $height_ratio ? $width * $height_ratio : null,
                     'name' => $name ?? null,
@@ -95,7 +95,7 @@
             @endif
 
             {{ $lazy ? 'data-src' : 'src' }}="{{
-                optimized($src, [
+                \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width ?? null,
                     'h' => $height ?? null,
                     'name' => $name ?? null,

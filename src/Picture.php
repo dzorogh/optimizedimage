@@ -2,6 +2,9 @@
 
 namespace Dzorogh\OptimizedImage;
 
+use Illuminate\Support\Facades\Log;
+use League\Glide\Urls\UrlBuilderFactory;
+
 class Picture {
     static function generate($src, array $data = null) {
         $height_ratio = 0;
@@ -23,5 +26,57 @@ class Picture {
             'height_ratio' => $height_ratio,
             'lazy' => isset($data['lazy']) ? $data['lazy'] : true,
         ]);
+    }
+
+    static function makeUrl($src, $params = null)
+    {
+        $urlBuilder = UrlBuilderFactory::create('i', env('APP_KEY_128'));
+
+        $path = pathinfo($src);
+
+        if (isset($params['ratio'])) {
+
+            if (isset($params['w']) && !isset($params['h'])) {
+                if ($params['ratio'] == '16x9') {
+                    $params['h'] = $params['w'] / (16 / 9);
+                }
+            }
+
+            if (isset($params['h']) && !isset($params['w'])) {
+                if ($params['ratio'] == '16x9') {
+                    $params['w'] = $params['h'] * (16 / 9);
+                }
+            }
+        }
+
+        $resultingPath = $path['dirname'] . '/' . $path['filename'] . '/' . urlencode(($params['name'] ?? config('optimizedimage.default_name'))) . '.' . $path['extension'];
+        $resultingParams = [
+            'q' => isset($params['preload']) ? 40 : 85,
+            'blur' => isset($params['preload']) ? 100 : null,
+
+            'h' => $params['h'] ?? null,
+            'w' => $params['w'] ?? null,
+
+            'fit' => $params['fit'] ?? 'crop',
+
+            'dpr' => $params['dpr'] ?? 1,
+
+            'fm' => $params['fm'] ?? 'webp',
+            'bg' => $params['bg'] ?? null,
+        ];
+
+
+        Log::info('Building Optimized Image Url', [
+            'url' => $resultingPath,
+            'params' => $resultingParams
+        ]);
+
+        $url = $urlBuilder->getUrl($resultingPath, $resultingParams);
+
+        /*if (\Request::getHost() == 'ireparo.test') {
+            return 'https://ireparo.ru' . $url;
+        }*/
+
+        return $url;
     }
 }
