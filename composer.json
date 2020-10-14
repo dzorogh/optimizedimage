@@ -14,9 +14,6 @@
     "league/glide": "^1.6"
   },
   "autoload": {
-    "files": [
-      "helpers.php"
-    ],
     "psr-4": {
       "Dzorogh\\OptimizedImage\\": "src"
     }
