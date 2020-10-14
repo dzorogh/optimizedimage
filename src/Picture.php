@@ -30,7 +30,7 @@ class Picture {
 
     static function makeUrl($src, $params = null)
     {
-        $urlBuilder = UrlBuilderFactory::create('i', env('APP_KEY_128'));
+        $urlBuilder = UrlBuilderFactory::create('', env('APP_KEY_128'));
 
         $path = pathinfo($src);
 
@@ -49,7 +49,7 @@ class Picture {
             }
         }
 
-        $resultingPath = $path['dirname'] . '/' . $path['filename'] . '/' . urlencode(($params['name'] ?? config('optimizedimage.default_name'))) . '.' . $path['extension'];
+        $resultingPath = '/i/' . $path['dirname'] . '/' . $path['filename'] . '/' . urlencode(($params['name'] ?? config('optimizedimage.default_name'))) . '.' . $path['extension'];
         $resultingParams = [
             'q' => isset($params['preload']) ? 40 : 85,
             'blur' => isset($params['preload']) ? 100 : null,
