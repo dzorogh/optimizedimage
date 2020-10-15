@@ -37,13 +37,13 @@ class ImageController extends Controller
 
         try {
             // Check key. Same key must be used when generating full url
-            SignatureFactory::create(env('APP_KEY_128'))->validateRequest($fullPath, $query);
-
+            SignatureFactory::create('secure-key')->validateRequest($fullPath, $query);
         } catch (SignatureException $e) {
             $error = [
                 'src' => $src,
                 'path' => $path,
-                'request-path' => $fullPath,
+                'validating-path' => $fullPath,
+                'validating-query' => $query,
                 'get' => $_GET,
                 'request-query' => request()->query(),
                 'request-input' => request()->input(),

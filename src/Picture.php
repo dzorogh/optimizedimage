@@ -30,7 +30,9 @@ class Picture {
 
     static function makeUrl($src, $params = null)
     {
-        $urlBuilder = UrlBuilderFactory::create('', env('APP_KEY_128'));
+        $urlBuilder = UrlBuilderFactory::create('', 'secure-key');
+//        $urlBuilder = UrlBuilderFactory::create('i', env('APP_KEY_128'));
+
 
         $path = pathinfo($src);
 
@@ -49,7 +51,7 @@ class Picture {
             }
         }
 
-        $resultingPath = '/i/' . $path['dirname'] . '/' . $path['filename'] . '/' . urlencode(($params['name'] ?? config('optimizedimage.default_name'))) . '.' . $path['extension'];
+        $resultingPath = '/i' . $path['dirname'] . '/' . $path['filename'] . '/' . urlencode(($params['name'] ?? config('optimizedimage.default_name'))) . '.' . $path['extension'];
         $resultingParams = [
             'q' => isset($params['preload']) ? 40 : 85,
             'blur' => isset($params['preload']) ? 100 : null,
@@ -66,12 +68,15 @@ class Picture {
         ];
 
 
-        Log::info('Building Optimized Image Url', [
-            'url' => $resultingPath,
-            'params' => $resultingParams
-        ]);
+
 
         $url = $urlBuilder->getUrl($resultingPath, $resultingParams);
+
+        Log::info('Building Optimized Image Url', [
+            'path' => $resultingPath,
+            'params' => $resultingParams,
+            'result_url' => $url
+        ]);
 
         /*if (\Request::getHost() == 'ireparo.test') {
             return 'https://ireparo.ru' . $url;
