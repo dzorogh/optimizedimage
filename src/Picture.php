@@ -72,11 +72,11 @@ class Picture {
 
         $url = $urlBuilder->getUrl($resultingPath, $resultingParams);
 
-        Log::info('Building Optimized Image Url', [
+        /*Log::info('Building Optimized Image Url', [
             'path' => $resultingPath,
             'params' => $resultingParams,
             'result_url' => $url
-        ]);
+        ]);*/
 
         /*if (\Request::getHost() == 'ireparo.test') {
             return 'https://ireparo.ru' . $url;
