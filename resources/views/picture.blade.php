@@ -1,14 +1,14 @@
 <picture class="{{ $picture_classes ?? '' }}">
     <source
             @if ($lazy)
-                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                srcset="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E"
             @endif
 
             {{ $lazy ? 'data-srcset' : 'srcset' }}="
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
-                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'h' => $height,
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => 'webp',
@@ -17,7 +17,7 @@
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
-                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'h' => $height,
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => 'webp',
@@ -26,7 +26,7 @@
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
-                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'h' => $height,
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => 'webp',
@@ -35,7 +35,7 @@
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
-                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'h' => $height,
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => 'webp',
@@ -46,14 +46,14 @@
 
     <source
             @if ($lazy)
-                srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                srcset="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E"
             @endif
 
             {{ $lazy ? 'data-srcset' : 'srcset' }}="
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
-                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'h' => $height,
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => $type ?? 'jpg',
@@ -62,7 +62,7 @@
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
-                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'h' => $height,
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => $type ?? 'jpg',
@@ -71,7 +71,7 @@
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
-                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'h' => $height,
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => $type ?? 'jpg',
@@ -80,7 +80,7 @@
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
                     'w' => $width,
-                    'h' => $height_ratio ? $width * $height_ratio : null,
+                    'h' => $height,
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => $type ?? 'jpg',
@@ -91,7 +91,7 @@
 
     <img
             @if ($lazy)
-                src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {{ $width }} {{ $height }}'%3E%3C/svg%3E"
             @endif
 
             {{ $lazy ? 'data-src' : 'src' }}="{{

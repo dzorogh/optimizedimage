@@ -7,23 +7,68 @@ use League\Glide\Urls\UrlBuilderFactory;
 
 class Picture {
     static function generate($src, array $data = null) {
-        $height_ratio = 0;
+        $height_ratio = null;
 
-        if (isset($data['width']) && $data['width'] && isset($data['height']) && $data['height']) {
-            $height_ratio = $data['height'] / $data['width'];
+        $width = null;
+        $height = null;
+
+        if (isset($data['width'])) {
+            $width = $data['width'];
+
+            if (!isset($data['height'])) {
+                $imageSize = getimagesize(storage_path(config('optimizedimage.source_folder') . $src));
+
+                $imageSizeWidth = $imageSize[0];
+                $imageSizeHeight = $imageSize[1];
+
+                $height_ratio = $imageSizeHeight / $imageSizeWidth;
+
+                $height = $width * $height_ratio;
+            }
         }
+
+        if (isset($data['height'])) {
+            $height = $data['height'];
+
+            if (!isset($data['width'])) {
+                $imageSize = getimagesize(storage_path(config('optimizedimage.source_folder') . $src));
+
+                $imageSizeWidth = $imageSize[0];
+                $imageSizeHeight = $imageSize[1];
+
+                $height_ratio = $imageSizeHeight / $imageSizeWidth;
+
+                $width = $height / $height_ratio;
+            }
+        }
+
+        if (!isset($data['width']) && !isset($data['height'])) {
+            $imageSize = getimagesize(storage_path(config('optimizedimage.source_folder') . $src));
+
+            $imageSizeWidth = $imageSize[0];
+            $imageSizeHeight = $imageSize[1];
+
+            $height_ratio = $imageSizeHeight / $imageSizeWidth;
+
+            if ($imageSizeWidth > 1200) {
+                $width = 1200;
+            } else {
+                $width = $imageSizeWidth;
+            }
+
+            $height = $width * $height_ratio;
+        }
+
 
         return view('optimizedimage::picture', [
             'src' => $src,
             'picture_classes' => $data['picture_classes'] ?? null,
             'img_classes' => $data['img_classes'] ?? null,
-            'width' => $data['width'] ?? null,
-//            'mobile_width' => $data['mobile_width'] ?? null,
-            'height' => $data['height'] ?? null,
+            'width' => round($width),
+            'height' => round($height),
             'name' => $data['name'] ?? null,
             'type' => $data['type'] ?? null,
             'fit' => $data['fit'] ?? null,
-            'height_ratio' => $height_ratio,
             'lazy' => isset($data['lazy']) ? $data['lazy'] : true,
         ]);
     }
