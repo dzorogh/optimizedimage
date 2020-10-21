@@ -100,7 +100,8 @@
                     'h' => $height ?? null,
                     'name' => $name ?? null,
                     'fit' => $fit ?? null
-                 ]) }}"
+                 ])
+            }}"
 
             width="{{ $width ?? null}}"
             height="{{ $height ?? null}}"
