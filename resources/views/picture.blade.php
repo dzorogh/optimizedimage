@@ -46,7 +46,7 @@
 
     <source
             @if ($lazy)
-                srcset="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E"
+                srcset="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs= 1x"
             @endif
 
             {{ $lazy ? 'data-srcset' : 'srcset' }}="
