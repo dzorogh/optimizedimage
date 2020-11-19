@@ -62,6 +62,7 @@ class Picture {
 
         return view('optimizedimage::picture', [
             'alt' => $data['alt'] ?? null,
+            'title' => $data['title'] ?? null,
             'src' => $src,
             'picture_classes' => $data['picture_classes'] ?? null,
             'img_classes' => $data['img_classes'] ?? null,

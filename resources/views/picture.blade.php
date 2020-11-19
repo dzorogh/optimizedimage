@@ -110,5 +110,9 @@
         alt="{{ $alt }}"
     @endif
 
+    @if ($title)
+        title="{{ $title }}"
+    @endif
+
     class="{{ $img_classes ?? null }} {{ $lazy ? 'lazy' : '' }}">
 </picture>
