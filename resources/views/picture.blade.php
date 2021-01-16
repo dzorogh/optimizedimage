@@ -41,7 +41,7 @@
                     'fm' => 'webp',
                     'dpr' => 1
                 ]) }} 1800w"
-    sizes="(max-width: 1200px) 98vw, 1200px"
+    sizes="(max-width: 800px) 98vw, 1200px"
 
     type="image/webp">
 
