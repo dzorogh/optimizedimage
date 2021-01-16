@@ -12,7 +12,7 @@
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => 'webp',
-                    'dpr' => 0.25
+                    'dpr' => 0.7
                 ]) }} 400w,
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
@@ -21,7 +21,7 @@
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => 'webp',
-                    'dpr' => 0.5
+                    'dpr' => 0.8
                 ]) }} 800w,
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
@@ -30,7 +30,7 @@
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => 'webp',
-                    'dpr' => 0.75
+                    'dpr' => 0.9
                 ]) }} 1400w,
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
@@ -41,7 +41,7 @@
                     'fm' => 'webp',
                     'dpr' => 1
                 ]) }} 1800w"
-    sizes="80vw"
+    sizes="100vw"
 
     type="image/webp">
 
