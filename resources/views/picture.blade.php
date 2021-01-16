@@ -1,7 +1,7 @@
 <picture class="{{ $picture_classes ?? '' }}">
     <source
             @if ($lazy)
-            srcset="data:image/svg+xml;base64,{{ base64_encode("<svg xmlns='http://www.w3.org/2000/svg' width='{$width}' height='{$height}'></svg>") }} 1x"
+            srcset="data:image/svg+xml;base64,{{ base64_encode("<svg xmlns='http://www.w3.org/2000/svg' width='{$width}' height='{$height}'></svg>") }} 400w"
     @endif
 
     {{ $lazy ? 'data-srcset' : 'srcset' }}="
@@ -47,7 +47,7 @@
 
     <source
             @if ($lazy)
-            srcset="data:image/svg+xml;base64,{{ base64_encode("<svg xmlns='http://www.w3.org/2000/svg' width='{$width}' height='{$height}'></svg>") }} 1x"
+            srcset="data:image/svg+xml;base64,{{ base64_encode("<svg xmlns='http://www.w3.org/2000/svg' width='{$width}' height='{$height}'></svg>") }} 400w"
     @endif
 
     {{ $lazy ? 'data-srcset' : 'srcset' }}="
