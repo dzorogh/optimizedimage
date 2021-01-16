@@ -41,7 +41,7 @@
                     'fm' => 'webp',
                     'dpr' => 1
                 ]) }} 1800w"
-    sizes="100vw"
+    sizes="90vw"
 
     type="image/webp">
 
@@ -58,7 +58,7 @@
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => $type ?? 'jpg',
-                    'dpr' => 0.25
+                    'dpr' => 0.7
                 ]) }} 400w,
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
@@ -67,7 +67,7 @@
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => $type ?? 'jpg',
-                    'dpr' => 0.5
+                    'dpr' => 0.8
                 ]) }} 800w,
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
@@ -76,7 +76,7 @@
                     'name' => $name ?? null,
                     'fit' => $fit ?? null,
                     'fm' => $type ?? 'jpg',
-                    'dpr' => 0.75
+                    'dpr' => 0.9
                 ]) }} 1400w,
 
                 {{ \Dzorogh\OptimizedImage\Picture::makeUrl($src, [
@@ -88,7 +88,7 @@
                     'dpr' => 1
                 ]) }} 1800w"
 
-    sizes="(max-width: 1200px) 98vw, 1200px"
+    sizes="90vw"
 
     type="image/{{ (!$type || $type === 'jpg') ? 'jpeg' : $type }}">
 
